@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;700;900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Meal Plan - OkulApp</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #137fec;
+        --secondary-color: #6c757d;
+        --background-color: #f8f9fa;
+        --card-background-color: #ffffff;
+        --text-color: #212529;
+        --muted-text-color: #6c757d;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[var(--background-color)]" style='font-family: "Inter", "Noto Sans", sans-serif;'>
+<div class="relative flex min-h-screen w-full flex-col justify-between group/design-root overflow-x-hidden">
+<div class="flex-grow">
+<header class="bg-white sticky top-0 z-10 shadow-sm">
+<div class="flex items-center p-4">
+<button class="text-[var(--text-color)]">
+<span class="material-symbols-outlined"> arrow_back_ios_new </span>
+</button>
+<h1 class="text-[var(--text-color)] text-xl font-bold leading-tight tracking-tight flex-1 text-center pr-8">Meal Plan</h1>
+</div>
+<div class="flex border-b border-gray-200 px-4">
+<a class="flex flex-col items-center justify-center border-b-2 border-[var(--primary-color)] text-[var(--primary-color)] pb-3 pt-2 px-4" href="#">
+<p class="text-sm font-semibold">Daily</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-[var(--muted-text-color)] pb-3 pt-2 px-4" href="#">
+<p class="text-sm font-semibold">Weekly</p>
+</a>
+</div>
+</header>
+<main class="p-4 space-y-6">
+<section>
+<h2 class="text-[var(--text-color)] text-lg font-bold leading-tight tracking-tight mb-4">Today's Menu</h2>
+<div class="space-y-4">
+{% for meal in today_menu %}
+<div class="bg-[var(--card-background-color)] rounded-xl shadow-sm overflow-hidden">
+<div class="h-32 w-full bg-center bg-no-repeat bg-cover" style='background-image: url("{{ meal.image_url }}");'></div>
+<div class="p-4">
+<p class="text-[var(--muted-text-color)] text-sm font-medium">{{ meal.type }}</p>
+<p class="text-[var(--text-color)] text-lg font-semibold leading-tight mt-1">{{ meal.name }}</p>
+<p class="text-[var(--muted-text-color)] text-sm mt-2">{{ meal.description }}</p>
+</div>
+</div>
+{% endfor %}
+</div>
+</section>
+<section>
+<h2 class="text-[var(--text-color)] text-lg font-bold leading-tight tracking-tight mb-4">Dietary Information</h2>
+<div class="space-y-3">
+{% for info in dietary_info %}
+<div class="flex items-center gap-4 bg-[var(--card-background-color)] p-4 rounded-xl shadow-sm">
+<div class="{{ info.icon_color }} flex items-center justify-center rounded-full {{ info.bg_color }} shrink-0 size-12">
+<span class="material-symbols-outlined text-3xl"> {{ info.icon }} </span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-[var(--text-color)] text-base font-semibold">{{ info.title }}</p>
+<p class="text-[var(--muted-text-color)] text-sm">{{ info.description }}</p>
+</div>
+</div>
+{% endfor %}
+</div>
+</section>
+</main>
+</div>
+<footer class="sticky bottom-0 bg-white border-t border-gray-200 shadow-t-sm">
+<nav class="flex justify-around items-center px-2 py-1">
+<a class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg text-[var(--primary-color)]" href="#">
+<span class="material-symbols-outlined filled"> restaurant </span>
+<p class="text-xs font-semibold">Meal</p>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg text-[var(--muted-text-color)]" href="#">
+<span class="material-symbols-outlined"> list_alt </span>
+<p class="text-xs font-medium">Classes</p>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg text-[var(--muted-text-color)]" href="#">
+<span class="material-symbols-outlined"> event </span>
+<p class="text-xs font-medium">Holidays</p>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 p-2 rounded-lg text-[var(--muted-text-color)]" href="#">
+<span class="material-symbols-outlined"> wb_sunny </span>
+<p class="text-xs font-medium">Weather</p>
+</a>
+</nav>
+<div class="h-5 bg-white"></div>
+</footer>
+</div>
+
+</body></html>

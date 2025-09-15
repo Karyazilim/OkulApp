@@ -1,0 +1,11 @@
+/* Optional additional custom styles - primary styling comes from Tailwind CDN */
+/* This file is kept minimal as all styling is handled by Tailwind and the inline styles */
+
+/* Fallback styles in case CDN doesn't load (for testing environments) */
+.fallback-primary {
+    color: #137fec;
+}
+
+.fallback-muted {
+    color: #6c757d;
+}
